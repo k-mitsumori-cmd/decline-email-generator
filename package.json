@@ -1,0 +1,25 @@
+{
+  "name": "decline-email-generator",
+  "version": "1.0.0",
+  "description": "商談やサービス説明後の丁寧なお断りメールをAIで自動生成するツール",
+  "main": "api/generate.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "email",
+    "decline",
+    "business",
+    "ai",
+    "generator"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "openai": "^4.0.0"
+  }
+}
+

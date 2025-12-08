@@ -1,0 +1,456 @@
+/* ========================================
+   基本設定
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   ヘッダー
+   ======================================== */
+.header {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    text-align: center;
+}
+
+.header-text h1 {
+    font-size: 28px;
+    color: #667eea;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.header-text p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* ========================================
+   メインコンテンツ
+   ======================================== */
+.main-content {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2,
+.preview-section h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+/* ========================================
+   フォーム
+   ======================================== */
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.required {
+    color: #e74c3c;
+    font-weight: 700;
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* ========================================
+   お断り理由タブ
+   ======================================== */
+.reason-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.reason-tab {
+    padding: 10px 16px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reason-tab:hover {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.reason-tab.active {
+    background: #667eea;
+    border-color: #667eea;
+    color: white;
+}
+
+#customReason {
+    margin-top: 12px;
+}
+
+/* ========================================
+   ボタン
+   ======================================== */
+.sample-button-wrapper {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.sample-btn {
+    padding: 12px 24px;
+    background: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sample-btn:hover {
+    background: #e9ecef;
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.generate-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.generate-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+.generate-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ========================================
+   プログレスバー
+   ======================================== */
+.progress-container {
+    margin: 32px 0;
+    padding: 40px;
+    text-align: center;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.progress-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.progress-circle {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.progress-ring-bg {
+    fill: none;
+    stroke: #e0e0e0;
+    stroke-width: 8;
+}
+
+.progress-ring {
+    fill: none;
+    stroke: #667eea;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 339.292;
+    stroke-dashoffset: 339.292;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 0.3s ease;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.progress-message {
+    font-size: 16px;
+    color: #666;
+    font-weight: 500;
+}
+
+/* ========================================
+   プレビューセクション
+   ======================================== */
+.preview-section {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.preview-content {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.email-preview {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+    line-height: 1.8;
+    font-size: 15px;
+    color: #333;
+    min-height: 200px;
+}
+
+.preview-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.action-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    max-width: 200px;
+}
+
+.copy-btn {
+    background: #667eea;
+    color: white;
+}
+
+.copy-btn:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+}
+
+.regenerate-btn {
+    background: #f8f9fa;
+    color: #666;
+    border: 2px solid #e0e0e0;
+}
+
+.regenerate-btn:hover {
+    background: #e9ecef;
+    border-color: #667eea;
+    color: #667eea;
+}
+
+/* ========================================
+   フッター
+   ======================================== */
+.footer {
+    text-align: center;
+    margin-top: 24px;
+    padding: 20px;
+    color: white;
+    font-size: 14px;
+}
+
+/* ========================================
+   レスポンシブデザイン
+   ======================================== */
+@media (max-width: 768px) {
+    body {
+        padding: 12px;
+    }
+
+    .header {
+        padding: 24px 20px;
+        margin-bottom: 16px;
+    }
+
+    .header-text h1 {
+        font-size: 22px;
+    }
+
+    .header-text p {
+        font-size: 14px;
+    }
+
+    .main-content {
+        padding: 24px 20px;
+    }
+
+    .form-section h2,
+    .preview-section h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .reason-tabs {
+        gap: 6px;
+    }
+
+    .reason-tab {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .generate-btn {
+        font-size: 16px;
+        padding: 14px;
+    }
+
+    .progress-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .progress-circle svg {
+        width: 100px;
+        height: 100px;
+    }
+
+    .progress-text {
+        font-size: 20px;
+    }
+
+    .preview-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .action-btn {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 20px 16px;
+    }
+
+    .header-text h1 {
+        font-size: 20px;
+    }
+
+    .header-text p {
+        font-size: 13px;
+    }
+
+    .main-content {
+        padding: 20px 16px;
+    }
+
+    .form-group input[type="text"],
+    .form-group textarea,
+    .form-group select {
+        font-size: 16px;
+        padding: 10px 14px;
+    }
+
+    .reason-tab {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .progress-circle {
+        width: 80px;
+        height: 80px;
+    }
+
+    .progress-circle svg {
+        width: 80px;
+        height: 80px;
+    }
+
+    .progress-text {
+        font-size: 18px;
+    }
+
+    .email-preview {
+        padding: 16px;
+        font-size: 14px;
+    }
+}
+

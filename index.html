@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お断りメール生成ツール</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>📧 お断りメール生成ツール</h1>
+                    <p>商談やサービス説明後の丁寧なお断りメールをAIが自動生成</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- メインコンテンツ -->
+        <main class="main-content">
+            <!-- 入力フォーム -->
+            <section class="form-section">
+                <h2>📝 情報を入力してください</h2>
+                <form id="emailForm">
+                    <!-- 相手の会社名 -->
+                    <div class="form-group">
+                        <label for="companyName">
+                            相手の会社名 <span class="required">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="companyName" 
+                            placeholder="例: 株式会社〇〇" 
+                            required
+                        >
+                    </div>
+
+                    <!-- 担当者名 -->
+                    <div class="form-group">
+                        <label for="contactName">
+                            担当者名 <span class="required">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="contactName" 
+                            placeholder="例: 山田太郎" 
+                            required
+                        >
+                    </div>
+
+                    <!-- サービス名 -->
+                    <div class="form-group">
+                        <label for="serviceName">
+                            サービス・商品名 <span class="required">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="serviceName" 
+                            placeholder="例: 営業支援ツール「SalesForce Pro」" 
+                            required
+                        >
+                    </div>
+
+                    <!-- 受け取ったメールの内容 -->
+                    <div class="form-group">
+                        <label for="receivedEmail">
+                            受け取ったメールの内容（任意）
+                        </label>
+                        <textarea 
+                            id="receivedEmail" 
+                            rows="4" 
+                            placeholder="相手から受け取ったメールの内容を貼り付けると、より適切な返信が生成されます"
+                        ></textarea>
+                    </div>
+
+                    <!-- お断り理由 -->
+                    <div class="form-group">
+                        <label for="declineReason">
+                            お断り理由 <span class="required">*</span>
+                        </label>
+                        <div class="reason-tabs">
+                            <button type="button" class="reason-tab active" data-reason="budget">予算が合わない</button>
+                            <button type="button" class="reason-tab" data-reason="timing">タイミングが合わない</button>
+                            <button type="button" class="reason-tab" data-reason="other-service">他サービスを採用</button>
+                            <button type="button" class="reason-tab" data-reason="no-need">ニーズがない</button>
+                            <button type="button" class="reason-tab" data-reason="internal">社内事情</button>
+                            <button type="button" class="reason-tab" data-reason="custom">カスタム</button>
+                        </div>
+                        <textarea 
+                            id="customReason" 
+                            rows="3" 
+                            placeholder="カスタム理由を入力してください"
+                            style="display: none;"
+                        ></textarea>
+                    </div>
+
+                    <!-- 追加メッセージ -->
+                    <div class="form-group">
+                        <label for="additionalMessage">
+                            追加メッセージ（任意）
+                        </label>
+                        <textarea 
+                            id="additionalMessage" 
+                            rows="3" 
+                            placeholder="特に伝えたいことがあれば入力してください（例: 今後の機会があれば検討したい、等）"
+                        ></textarea>
+                    </div>
+
+                    <!-- トーン選択 -->
+                    <div class="form-group">
+                        <label for="tone">
+                            メールのトーン
+                        </label>
+                        <select id="tone">
+                            <option value="formal">丁寧・フォーマル</option>
+                            <option value="friendly">親しみやすい</option>
+                            <option value="business">ビジネスライク</option>
+                        </select>
+                    </div>
+
+                    <!-- サンプルデータボタン -->
+                    <div class="sample-button-wrapper">
+                        <button type="button" id="sampleBtn" class="sample-btn">
+                            🎲 サンプルデータを入力
+                        </button>
+                    </div>
+
+                    <!-- 生成ボタン -->
+                    <button type="submit" id="generateBtn" class="generate-btn">
+                        ✨ メールを生成する
+                    </button>
+                </form>
+            </section>
+
+            <!-- プログレスバー -->
+            <div id="progressContainer" class="progress-container" style="display: none;">
+                <div class="progress-content">
+                    <div class="progress-circle">
+                        <svg width="120" height="120">
+                            <circle cx="60" cy="60" r="54" class="progress-ring-bg"></circle>
+                            <circle cx="60" cy="60" r="54" class="progress-ring" id="progressRing"></circle>
+                        </svg>
+                        <div class="progress-text" id="progressText">0%</div>
+                    </div>
+                    <p class="progress-message">AIがメールを生成中...</p>
+                </div>
+            </div>
+
+            <!-- プレビューセクション -->
+            <section id="previewSection" class="preview-section" style="display: none;">
+                <h2>📨 生成されたメール</h2>
+                <div class="preview-content">
+                    <div class="email-preview" id="emailPreview"></div>
+                    
+                    <div class="preview-actions">
+                        <button id="copyBtn" class="action-btn copy-btn">
+                            📋 コピーする
+                        </button>
+                        <button id="regenerateBtn" class="action-btn regenerate-btn">
+                            🔄 再生成する
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- フッター -->
+        <footer class="footer">
+            <p>© 2025 お断りメール生成ツール | Powered by AI</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
