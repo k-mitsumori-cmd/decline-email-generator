@@ -1,6 +1,6 @@
 {
   "buildCommand": "echo 'No build required'",
-  "outputDirectory": ".",
+  "outputDirectory": "public",
   "rewrites": [
     {
       "source": "/api/generate",
