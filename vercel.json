@@ -4,6 +4,10 @@
       "source": "/api/generate",
       "destination": "/api/generate"
     }
-  ]
+  ],
+  "functions": {
+    "api/generate.js": {
+      "maxDuration": 30
+    }
+  }
 }
-

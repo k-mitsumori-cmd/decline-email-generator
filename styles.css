@@ -9,11 +9,10 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
-    line-height: 1.6;
-    color: #333;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     padding: 20px;
+    line-height: 1.6;
 }
 
 .container {
@@ -38,14 +37,13 @@ body {
 
 .header-text h1 {
     font-size: 28px;
-    color: #667eea;
+    color: #2d3748;
     margin-bottom: 8px;
-    font-weight: 700;
 }
 
 .header-text p {
     font-size: 16px;
-    color: #666;
+    color: #718096;
 }
 
 /* ========================================
@@ -56,15 +54,16 @@ body {
     border-radius: 16px;
     padding: 32px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 24px;
 }
 
 .form-section h2,
 .preview-section h2 {
     font-size: 22px;
-    color: #333;
+    color: #2d3748;
     margin-bottom: 24px;
     padding-bottom: 12px;
-    border-bottom: 2px solid #f0f0f0;
+    border-bottom: 2px solid #e2e8f0;
 }
 
 /* ========================================
@@ -76,32 +75,45 @@ body {
 
 .form-group label {
     display: block;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 8px;
     font-size: 15px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 8px;
+}
+
+.required,
+.optional {
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+    font-weight: 500;
 }
 
 .required {
-    color: #e74c3c;
-    font-weight: 700;
+    background: #fed7d7;
+    color: #c53030;
+}
+
+.optional {
+    background: #e2e8f0;
+    color: #718096;
 }
 
 .form-group input[type="text"],
-.form-group textarea,
-.form-group select {
+.form-group textarea {
     width: 100%;
     padding: 12px 16px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
     font-size: 16px;
-    font-family: inherit;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
     transition: all 0.3s ease;
+    font-family: inherit;
 }
 
 .form-group input[type="text"]:focus,
-.form-group textarea:focus,
-.form-group select:focus {
+.form-group textarea:focus {
     outline: none;
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
@@ -113,7 +125,7 @@ body {
 }
 
 /* ========================================
-   お断り理由タブ
+   理由タブ
    ======================================== */
 .reason-tabs {
     display: flex;
@@ -124,74 +136,69 @@ body {
 
 .reason-tab {
     padding: 10px 16px;
-    border: 2px solid #e0e0e0;
-    background: white;
-    border-radius: 8px;
     font-size: 14px;
-    font-weight: 500;
-    color: #666;
+    border: 2px solid #e2e8f0;
+    background: white;
+    color: #4a5568;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 .reason-tab:hover {
     border-color: #667eea;
-    color: #667eea;
+    background: #f7fafc;
 }
 
 .reason-tab.active {
     background: #667eea;
-    border-color: #667eea;
     color: white;
-}
-
-#customReason {
-    margin-top: 12px;
+    border-color: #667eea;
 }
 
 /* ========================================
    ボタン
    ======================================== */
-.sample-button-wrapper {
-    text-align: center;
+.sample-button-container {
     margin-bottom: 24px;
+    text-align: center;
 }
 
 .sample-btn {
     padding: 12px 24px;
-    background: #f8f9fa;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
     font-size: 15px;
-    font-weight: 600;
-    color: #666;
+    background: #edf2f7;
+    color: #4a5568;
+    border: 2px solid #cbd5e0;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-weight: 600;
 }
 
 .sample-btn:hover {
-    background: #e9ecef;
-    border-color: #667eea;
-    color: #667eea;
+    background: #e2e8f0;
+    border-color: #a0aec0;
 }
 
 .generate-btn {
     width: 100%;
     padding: 16px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: none;
-    border-radius: 12px;
     font-size: 18px;
     font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
+    border: none;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 .generate-btn:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
 }
 
 .generate-btn:disabled {
@@ -203,11 +210,8 @@ body {
    プログレスバー
    ======================================== */
 .progress-container {
-    margin: 32px 0;
-    padding: 40px;
     text-align: center;
-    background: #f8f9fa;
-    border-radius: 12px;
+    padding: 40px 20px;
 }
 
 .progress-content {
@@ -223,21 +227,23 @@ body {
     height: 120px;
 }
 
-.progress-ring-bg {
+.progress-circle svg {
+    transform: rotate(-90deg);
+}
+
+.progress-circle-bg {
     fill: none;
-    stroke: #e0e0e0;
+    stroke: #e2e8f0;
     stroke-width: 8;
 }
 
-.progress-ring {
+.progress-circle-fill {
     fill: none;
     stroke: #667eea;
     stroke-width: 8;
     stroke-linecap: round;
     stroke-dasharray: 339.292;
     stroke-dashoffset: 339.292;
-    transform: rotate(-90deg);
-    transform-origin: 50% 50%;
     transition: stroke-dashoffset 0.3s ease;
 }
 
@@ -253,7 +259,7 @@ body {
 
 .progress-message {
     font-size: 16px;
-    color: #666;
+    color: #4a5568;
     font-weight: 500;
 }
 
@@ -263,66 +269,72 @@ body {
 .preview-section {
     margin-top: 32px;
     padding-top: 32px;
-    border-top: 2px solid #f0f0f0;
+    border-top: 2px solid #e2e8f0;
 }
 
-.preview-content {
-    background: #f8f9fa;
+.preview-container {
+    background: #f7fafc;
+    border: 2px solid #e2e8f0;
     border-radius: 12px;
     padding: 24px;
+    margin-bottom: 24px;
 }
 
 .email-preview {
-    background: white;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 24px;
-    margin-bottom: 20px;
-    white-space: pre-wrap;
-    line-height: 1.8;
     font-size: 15px;
-    color: #333;
-    min-height: 200px;
+    line-height: 1.8;
+    color: #2d3748;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .preview-actions {
     display: flex;
     gap: 12px;
-    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .action-btn {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
+    flex: 1;
+    min-width: 150px;
+    padding: 14px 20px;
     font-size: 15px;
     font-weight: 600;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    flex: 1;
-    max-width: 200px;
 }
 
 .copy-btn {
-    background: #667eea;
+    background: #48bb78;
     color: white;
 }
 
 .copy-btn:hover {
-    background: #5568d3;
+    background: #38a169;
     transform: translateY(-2px);
 }
 
 .regenerate-btn {
-    background: #f8f9fa;
-    color: #666;
-    border: 2px solid #e0e0e0;
+    background: #667eea;
+    color: white;
 }
 
 .regenerate-btn:hover {
-    background: #e9ecef;
-    border-color: #667eea;
-    color: #667eea;
+    background: #5568d3;
+    transform: translateY(-2px);
+}
+
+.reset-btn {
+    background: #718096;
+    color: white;
+}
+
+.reset-btn:hover {
+    background: #4a5568;
+    transform: translateY(-2px);
 }
 
 /* ========================================
@@ -330,14 +342,13 @@ body {
    ======================================== */
 .footer {
     text-align: center;
-    margin-top: 24px;
     padding: 20px;
     color: white;
     font-size: 14px;
 }
 
 /* ========================================
-   レスポンシブデザイン
+   レスポンシブ対応 (タブレット・スマホ)
    ======================================== */
 @media (max-width: 768px) {
     body {
@@ -359,6 +370,7 @@ body {
 
     .main-content {
         padding: 24px 20px;
+        margin-bottom: 16px;
     }
 
     .form-section h2,
@@ -401,11 +413,19 @@ body {
     }
 
     .action-btn {
-        max-width: 100%;
+        width: 100%;
+        min-width: auto;
     }
 }
 
+/* ========================================
+   レスポンシブ対応 (小さいスマホ)
+   ======================================== */
 @media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+
     .header {
         padding: 20px 16px;
     }
@@ -422,16 +442,29 @@ body {
         padding: 20px 16px;
     }
 
+    .form-section h2,
+    .preview-section h2 {
+        font-size: 18px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
     .form-group input[type="text"],
-    .form-group textarea,
-    .form-group select {
-        font-size: 16px;
-        padding: 10px 14px;
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 16px; /* iOSズーム防止 */
     }
 
     .reason-tab {
         padding: 8px 10px;
         font-size: 12px;
+    }
+
+    .generate-btn {
+        font-size: 15px;
+        padding: 12px;
     }
 
     .progress-circle {
@@ -448,9 +481,20 @@ body {
         font-size: 18px;
     }
 
-    .email-preview {
+    .progress-message {
+        font-size: 14px;
+    }
+
+    .preview-container {
         padding: 16px;
+    }
+
+    .email-preview {
+        font-size: 14px;
+    }
+
+    .action-btn {
+        padding: 12px 16px;
         font-size: 14px;
     }
 }
-
